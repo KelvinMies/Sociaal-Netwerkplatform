@@ -1,9 +1,74 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "63d86aa4-2a57-48bd-b381-cbddd54b9309",
-  "prevId": "4e2a432c-f9c4-457c-b99e-c2749d5152aa",
+  "id": "9dfd53cd-95ec-419a-a658-01ebf9368cdf",
+  "prevId": "ee257655-886e-4fbb-85b3-115ca0b4a26f",
   "tables": {
+    "groepen": {
+      "name": "groepen",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "naam": {
+          "name": "naam",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "beschrijving": {
+          "name": "beschrijving",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "datum_van_oprichting": {
+          "name": "datum_van_oprichting",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "beheerderID": {
+          "name": "beheerderID",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "groepen_beheerderID_users_id_fk": {
+          "name": "groepen_beheerderID_users_id_fk",
+          "tableFrom": "groepen",
+          "tableTo": "users",
+          "columnsFrom": [
+            "beheerderID"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "groepen_id": {
+          "name": "groepen_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
     "users": {
       "name": "users",
       "columns": {
@@ -48,6 +113,20 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "geboortedatum": {
+          "name": "geboortedatum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lastingelog": {
+          "name": "lastingelog",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -80,8 +159,6 @@
   "_meta": {
     "schemas": {},
     "tables": {},
-    "columns": {
-      "\"users\".\"email\"": "\"users\".\"e-mail\""
-    }
+    "columns": {}
   }
 }

@@ -1,9 +1,74 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "cb13ebad-0f0d-4f3f-84b3-74c2d92a9c9a",
+  "id": "96d1dd03-41e2-4eee-9b22-883a7f9adbf6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "groepen": {
+      "name": "groepen",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "naam": {
+          "name": "naam",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "beschrijving": {
+          "name": "beschrijving",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "datum_van_oprichting": {
+          "name": "datum_van_oprichting",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "beheerderID": {
+          "name": "beheerderID",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "groepen_beheerderID_users_id_fk": {
+          "name": "groepen_beheerderID_users_id_fk",
+          "tableFrom": "groepen",
+          "tableTo": "users",
+          "columnsFrom": [
+            "beheerderID"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "groepen_id": {
+          "name": "groepen_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
     "users": {
       "name": "users",
       "columns": {
@@ -35,11 +100,25 @@
           "notNull": true,
           "autoincrement": false
         },
-        "email": {
-          "name": "email",
+        "e-mail": {
+          "name": "e-mail",
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
+          "autoincrement": false
+        },
+        "wachtwoord": {
+          "name": "wachtwoord",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "geboortedatum": {
+          "name": "geboortedatum",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
           "autoincrement": false
         }
       },
@@ -60,10 +139,10 @@
             "gebruikersnaam"
           ]
         },
-        "users_email_unique": {
-          "name": "users_email_unique",
+        "users_e-mail_unique": {
+          "name": "users_e-mail_unique",
           "columns": [
-            "email"
+            "e-mail"
           ]
         }
       }

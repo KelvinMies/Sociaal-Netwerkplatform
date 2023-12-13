@@ -1,4 +1,4 @@
-import { int, mysqlTable, varchar } from "drizzle-orm/mysql-core";
+import { date, datetime, int, mysqlTable, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 
 export const db_user = mysqlTable("users", {
@@ -7,7 +7,10 @@ export const db_user = mysqlTable("users", {
     achternaam: varchar('achternaam', { length: 255 }).notNull(),
     gebruikersnaam: varchar('gebruikersnaam', { length: 255 }).notNull().unique(),
     email: varchar('e-mail', { length: 255 }).notNull().unique(),
-    wachtwoord: varchar('wachtwoord', { length: 255 }).notNull()
+    wachtwoord: varchar('wachtwoord', { length: 255 }).notNull(),
+    geboortedatum: date('geboortedatum').notNull(),
+    lastingelog: timestamp('lastingelog').notNull()
+
 })
 
 

@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `lastingelog` datetime NOT NULL;

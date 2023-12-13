@@ -14,6 +14,7 @@
   },
   "scripts": {
     "dev": "npx ts-node src/main.ts",
+    "dev:w": "npx ts-node src/main.ts",
     "drizzle:migration": "npx ts-node src/@database/migration.ts",
     "drizzle:generate": "drizzle-kit generate:mysql --config=src/@database/drizzle.config.ts"
   },
